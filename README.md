@@ -1,4 +1,5 @@
 # GhTr DIY JSON Helper
+![中文版README](README-zh-cn.md) 
 
 ![Extension Logo](icon.png) 
 
@@ -283,6 +284,21 @@ Analyzes the current level JSON file and generates a comprehensive summary, incl
 
 - The summary is formatted in Markdown, making it easy to read and share.
 - Useful for documentation, level reviews, or collaborative development.
+
+### 6. format Json
+
+**command**: `ghtr-diy.formatJson`  
+**shortcut**: `Ctrl+Alt+F`
+
+**Description**:  
+Analyses the current level JSON file and generates a comprehensive summary, including zombie statistics, wave information and overall level metrics. The summary will be saved as a Markdown file for easy reading and sharing.
+
+**Use steps**:
+
+1. **Trigger command**:
+    - Use the shortcut `Ctrl+Alt+F` or access via the command panel (`Ctrl+Shift+P` > `GhTr DIY: Format JSON`).
+2. **Processing Level Files**:
+    - Format the current Json file
 
 ## Examples
 

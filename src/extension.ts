@@ -4,17 +4,17 @@ import * as vscode from 'vscode';
 const ZombieTypeMap: { [key: string]: string } = {
     'NORMALZOMBIE': '普通僵尸',
     'FLAGZOMBIE': '旗帜僵尸',
-    'CONEZOMBIE': '圆锥僵尸',
-    'BUCKETZOMBIE': '水桶僵尸',
+    'CONEZOMBIE': '路障僵尸',
+    'BUCKETZOMBIE': '持铁桶僵尸',
     'POLEZOMBIE': '撑杆僵尸',
-    'FIREFLYZOMBIE': '萤火僵尸',
-    'ARROWZOMBIE': '箭头僵尸',
+    'FIREFLYZOMBIE': '萤火虫僵尸',
+    'ARROWZOMBIE': '弓箭僵尸',
     'WITCHZOMBIE': '女巫僵尸',
-    'INFROLLZOMBIE': '滚筒僵尸',
-    'MAGTRUCKZOMBIE': '磁力车僵尸',
-    'HAMSTERZOMBIE': '仓鼠僵尸',
-    'NULLZOMBIE': '空僵尸',
-    'ENDNULLZOMBIE': '结束空僵尸'
+    'INFROLLZOMBIE': '永动轮僵尸',
+    'MAGTRUCKZOMBIE': '磁铁车僵尸',
+    'HAMSTERZOMBIE': '仓鼠球僵尸',
+    'NULLZOMBIE': '每波分隔符',
+    'ENDNULLZOMBIE': '结束分隔符'
 };
 
 // 反向映射：中文到英文
@@ -42,37 +42,12 @@ const BaseLevelEvaluations: string[] = [
     '关卡目标明确，易于理解',
     '僵尸的强度递增合理',
     '关卡引导玩家逐步掌握游戏机制'
-    // 已移除 "音效与视觉效果搭配协调"
 ];
 
 // 传送带相关的关卡评价
 const ConveyorBeltEvaluations: string[] = [
     '传送带设置巧妙，增加了关卡的趣味性',
     '传送带上的特殊设置增加了游戏的复杂性'
-];
-
-// 预设的关卡评价标准（移除与出怪无关的评价）
-const LevelEvaluations: string[] = [
-    '关卡节奏平衡良好',
-    '僵尸种类丰富，挑战性高',
-    '阳光分配合理，策略性强',
-    '特殊僵尸出现频率适中',
-    '传送带设置巧妙，增加了关卡的趣味性',
-    '背景与关卡主题契合',
-    '波数设置合理，递进有序',
-    '僵尸行进路线多样化',
-    '关卡难度适中，适合大部分玩家',
-    '无限阳光设置增加了关卡的策略深度',
-    '传送带上的特殊设置增加了游戏的复杂性',
-    '僵尸出现速度适中，玩家有足够反应时间',
-    '关卡布局合理，资源利用高效',
-    '特殊僵尸的技能与普通僵尸形成对比',
-    '关卡整体设计富有创意',
-    '玩家有多种应对策略可选',
-    '关卡目标明确，易于理解',
-    '僵尸的强度递增合理',
-    '关卡引导玩家逐步掌握游戏机制'
-    // 已移除 "音效与视觉效果搭配协调"
 ];
 
 // 其他参数映射
