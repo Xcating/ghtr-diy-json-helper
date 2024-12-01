@@ -1,6 +1,6 @@
 # GhTr DIY JSON Helper
 
-![Extension Logo](https://via.placeholder.com/150) <!-- Replace with your actual logo -->
+![Extension Logo](icon.png) 
 
 ## Table of Contents
 
@@ -364,7 +364,7 @@ Contributions are welcome! Whether you're reporting bugs, suggesting features, o
 
 2. **Clone Your Fork**:
     ```bash
-    git clone https://github.com/your-username/ghtr-diy-json-helper.git
+    git clone https://github.com/Xcating/ghtr-diy-json-helper.git
     ```
 
 3. **Navigate to the Project Directory**:
@@ -407,18 +407,14 @@ Contributions are welcome! Whether you're reporting bugs, suggesting features, o
 
 If you encounter any issues or have suggestions for improvements:
 
-1. Navigate to the [Issues](https://github.com/your-username/ghtr-diy-json-helper/issues) section of the repository.
+1. Navigate to the [Issues](https://github.com/Xcating/ghtr-diy-json-helper/issues) section of the repository.
 2. Click **New Issue**.
 3. Provide a descriptive title and detailed description, including steps to reproduce the issue if applicable.
 4. Submit the issue.
 
-### Code of Conduct
-
-Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) when participating in this project.
-
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+No licence for this item
 
 ## Acknowledgements
 

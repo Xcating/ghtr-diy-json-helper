@@ -381,13 +381,10 @@ GhTr DIY JSON 助手预配置了优化性能的默认设置。然而，您可以
 
 如果您遇到任何问题或有改进建议：
 
-1. 导航到仓库的 [Issues](https://www.pvz.moe/threads/1660/) 部分。
-2. 提供描述性的标题和详细描述，包括如果适用的重现步骤。
-3. 提交问题。
-
-### 行为准则
-
-参与本项目时，请遵守 [行为准则](CODE_OF_CONDUCT.md)。
+1. 导航到仓库的 [Issues](https://github.com/Xcating/ghtr-diy-json-helper/issues) 部分。
+2. 点击 **New Issue**。
+3. 提供描述性的标题和详细描述，包括如果适用的重现步骤。
+4. 提交问题。
 
 ## 许可证
 
