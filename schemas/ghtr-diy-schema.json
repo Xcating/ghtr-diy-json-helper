@@ -113,7 +113,7 @@
           "ENDNULLZOMBIE",
           "PEASHOOTER"
         ],
-        "description": "种子包 ID，参见植物类型对照表"
+        "description": "自带种子包 ID，参见植物类型对照表"
       }
     },
     "Locks": {
