@@ -1,7 +1,6 @@
 # GhTr DIY JSON Helper
 ![中文版README](README-zh-cn.md) 
 
-![Extension Logo](icon.png) 
 
 ## Table of Contents
 
