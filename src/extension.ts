@@ -69,38 +69,90 @@ const AdditionalParamsMap: { [key: string]: string } = {
 
 /**
  * 自定义格式化JSON字符串，确保 ZombieList 中的每个僵尸对象在单独的一行。
+ * 处理嵌套对象时不会遗漏闭合大括号。
  * @param jsonObj JSON对象
  * @returns 格式化后的JSON字符串
  */
 function customFormatJSON(jsonObj: any): string {
-    // 首先，格式化整个JSON对象
+    // 首先，使用标准的 JSON.stringify 格式化整个 JSON 对象
     let jsonString = JSON.stringify(jsonObj, null, 4);
 
-    // 使用正则匹配 ZombieList 数组
-    jsonString = jsonString.replace(/"ZombieList":\s*\[([\s\S]*?)\]/, (match, p1) => {
-        // 匹配每个僵尸对象
-        const zombies = p1.split(/},\s*{/).map((zombieStr: any) => {
-            // 去除多余的空格和换行
-            zombieStr = zombieStr.trim();
-            // 确保每个僵尸对象以 { 开始，以 } 结尾
-            if (!zombieStr.startsWith('{')) {
-                zombieStr = `{${zombieStr}`;
-            }
-            if (!zombieStr.endsWith('}')) {
-                zombieStr = `${zombieStr}}`;
-            }
-            // 压缩为单行
-            return zombieStr.replace(/\s+/g, ' ');
-        });
+    // 将字符串按行分割
+    const lines = jsonString.split('\n');
+    const formattedLines: string[] = [];
 
-        // 重新构建 ZombieList
-        const formattedZombies = zombies.map((z:any) => z).join(',\n        ');
+    let insideZombieList = false; // 标记是否在 ZombieList 数组内部
+    let insideObject = false;     // 标记是否在一个僵尸对象内部
+    let objectLines: string[] = []; // 存储当前僵尸对象的行
+    let braceCount = 0;            // 大括号计数器，用于处理嵌套对象
 
-        return `"ZombieList": [\n        ${formattedZombies}\n    ]`;
-    });
+    for (let line of lines) {
+        const trimmedLine = line.trim();
+
+        // 检查是否开始了 ZombieList
+        if (!insideZombieList) {
+            if (trimmedLine.startsWith('"ZombieList"')) {
+                insideZombieList = true;
+            }
+            formattedLines.push(line);
+            continue;
+        }
+
+        // 检查是否结束了 ZombieList
+        if (insideZombieList && trimmedLine.startsWith(']')) {
+            insideZombieList = false;
+            formattedLines.push(line);
+            continue;
+        }
+
+        // 处理 ZombieList 内的每个僵尸对象
+        if (insideZombieList) {
+            if (!insideObject) {
+                if (trimmedLine.startsWith('{')) {
+                    insideObject = true;
+                    braceCount = (trimmedLine.match(/{/g) || []).length - (trimmedLine.match(/}/g) || []).length;
+                    objectLines = [trimmedLine];
+                    // 如果对象在同一行结束
+                    if (braceCount === 0) {
+                        const singleLineObject = objectLines.join(' ').replace(/,\s*}/, ' }');
+                        formattedLines.push('        ' + singleLineObject + ',');
+                        insideObject = false;
+                        objectLines = [];
+                    }
+                } else {
+                    // 处理数组中的逗号或其他内容
+                    formattedLines.push(line);
+                }
+            } else {
+                // 继续收集僵尸对象的行
+                braceCount += (trimmedLine.match(/{/g) || []).length - (trimmedLine.match(/}/g) || []).length;
+                objectLines.push(trimmedLine);
+
+                if (braceCount === 0) {
+                    // 一个完整的僵尸对象已经收集完毕
+                    const singleLineObject = objectLines.join(' ').replace(/,\s*}/, ' }');
+                    // 判断是否为最后一个对象，以决定是否添加逗号
+                    const isLastObject = lines.indexOf(line) === lines.length - 2; // 假设倒数第二行是最后一个对象
+                    const formattedObject = isLastObject
+                        ? '        ' + singleLineObject
+                        : '        ' + singleLineObject + '';
+                    formattedLines.push(formattedObject);
+                    insideObject = false;
+                    objectLines = [];
+                }
+            }
+        } else {
+            // 不在 ZombieList 内部，正常添加行
+            formattedLines.push(line);
+        }
+    }
+
+    // 将格式化后的行重新组合成字符串
+    jsonString = formattedLines.join('\n');
 
     return jsonString;
 }
+
 
 export function activate(context: vscode.ExtensionContext) {
     const diagnosticCollection = vscode.languages.createDiagnosticCollection('ghtr-diy');
