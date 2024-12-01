@@ -1,0 +1,128 @@
+{
+  "name": "ghtr-diy-json-helper",
+  "displayName": "GhTr DIY JSON Helper",
+  "description": "自动补全和校验 GhTr DIY 关卡 JSON 文件",
+  "version": "0.0.2",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:json"
+  ],
+  "contributes": {
+    "jsonValidation": [
+      {
+        "fileMatch": [
+          "/levels/*.json"
+        ],
+        "url": "./schemas/ghtr-diy-schema.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "json",
+        "extensions": [
+          ".json"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ghtr-diy.insertZombie",
+        "title": "GhTr DIY: Insert Zombie"
+      },
+      {
+        "command": "ghtr-diy.clearWave",
+        "title": "GhTr DIY: Clear Wave"
+      },
+      {
+        "command": "ghtr-diy.clearAllWaves",
+        "title": "GhTr DIY: Clear All Waves"
+      },
+      {
+        "command": "ghtr-diy.createTemplate",
+        "title": "GhTr DIY: Create Template"
+      },
+      {
+        "command": "ghtr-diy.generateSummary",
+        "title": "GhTr DIY: Generate Summary"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ghtr-diy.insertZombie",
+        "key": "ctrl+alt+z",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
+        "command": "ghtr-diy.clearWave",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
+        "command": "ghtr-diy.clearAllWaves",
+        "key": "ctrl+alt+shift+c",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
+        "command": "ghtr-diy.createTemplate",
+        "key": "ctrl+alt+t",
+        "when": "editorTextFocus && editorLangId == json"
+      },
+      {
+        "command": "ghtr-diy.generateSummary",
+        "key": "ctrl+alt+s",
+        "when": "editorTextFocus && editorLangId == json"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ghtr-diy.insertZombie",
+          "when": "editorLangId == json",
+          "group": "1_modification"
+        },
+        {
+          "command": "ghtr-diy.clearWave",
+          "when": "editorLangId == json",
+          "group": "2_modification"
+        },
+        {
+          "command": "ghtr-diy.clearAllWaves",
+          "when": "editorLangId == json",
+          "group": "3_modification"
+        },
+        {
+          "command": "ghtr-diy.createTemplate",
+          "when": "editorLangId == json",
+          "group": "4_modification"
+        },
+        {
+          "command": "ghtr-diy.generateSummary",
+          "when": "editorLangId == json",
+          "group": "5_modification"
+        }
+      ]
+    }
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^14.14.37",
+    "typescript": "^4.0.3",
+    "vscode": "^1.1.37",
+    "vsce": "^1.92.0"
+  },
+  "packageManager": "npm@10.8.0+sha1.f5a017649e934a59eba54af2ea908465eb830a8f"
+}

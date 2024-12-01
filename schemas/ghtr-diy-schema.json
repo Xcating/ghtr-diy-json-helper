@@ -1,0 +1,433 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GhTr DIY Level Schema",
+  "type": "object",
+  "required": [
+    "Background"
+  ],
+  "properties": {
+    "Waves": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "波数范围: 0~100"
+    },
+    "Background": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "description": "场景背景 ID，参见背景场景对照表"
+    },
+    "Sun": {
+      "type": "integer",
+      "default": 50,
+      "description": "初始阳光值（默认50，可省略）"
+    },
+    "Row": {
+      "type": "array",
+      "description": ""
+    },
+    "BackgroundParam": {
+      "type": "integer",
+      "description": "特殊数值"
+    },
+    "EndlessWave": {
+      "type": "integer",
+      "description": "无尽循环波"
+    },
+    "NoSeedChoose": {
+      "type": "boolean",
+      "description": "是否禁用选卡"
+    },
+    "NoLawnPreview": {
+      "type": "boolean",
+      "description": "是否禁用预览出怪"
+    },
+    "Mowers": {
+      "type": "boolean",
+      "description": "是否禁用小推车"
+    },
+    "NoShovel": {
+      "type": "boolean",
+      "description": "是否隐藏铲子"
+    },
+    "InftySun": {
+      "type": "boolean",
+      "description": "是否无限阳光"
+    },
+    "Recorder": {
+      "type": "integer",
+      "description": ""
+    },
+    "ExtraParam": {
+      "type": "integer",
+      "description": "特殊属性"
+    },
+    "Packets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ENZYMEI",
+          "APPLAYER",
+          "WALL_NUT",
+          "ROSELYNCH",
+          "CHERRY_BOMB",
+          "SUNFLOWER",
+          "HONEYSUCKLE",
+          "CUSCATA",
+          "LILYPAD",
+          "PLANTAGE",
+          "LORUS",
+          "OPTICALTROP",
+          "CORCHID",
+          "LIGHTNINGREED",
+          "POWERPLANT",
+          "WIREMOSS",
+          "MAGNETSHROOM",
+          "POTATOMINE",
+          "INFROLLZOMBIE",
+          "NULLZOMBIE",
+          "FLAGZOMBIE",
+          "CONEZOMBIE",
+          "BUCKETZOMBIE",
+          "POLEZOMBIE",
+          "FIREFLYZOMBIE",
+          "ARROWZOMBIE",
+          "WITCHZOMBIE",
+          "NORMALZOMBIE",
+          "HAMSTERZOMBIE",
+          "MAGTRUCKZOMBIE",
+          "ENDNULLZOMBIE",
+          "PEASHOOTER"
+        ],
+        "description": "种子包 ID，参见植物类型对照表"
+      }
+    },
+    "Locks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SUNFLOWER", "HONEYSUCKLE", "ENZYMEI",
+          "ROSELYNCH", "CHERRY_BOMB", "WALL_NUT", "LILYPAD",
+          "PLANTAGE", "CUSCATA", "LORUS", "OPTICALTROP",
+          "CORCHID", "LIGHTNINGREED", "APPLAYER", "POWERPLANT",
+          "WIREMOSS","MAGNETSHROOM",
+          "POTATOMINE","PEASHOOTER"
+        ],
+        "description": "锁定/禁用的植物 ID"
+      }
+    },
+    "ZombieList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "Type"
+        ],
+        "properties": {
+          "Type": {
+            "type": "string",
+            "enum": [
+              "NORMALZOMBIE",
+              "FLAGZOMBIE",
+              "CONEZOMBIE",
+              "BUCKETZOMBIE",
+              "POLEZOMBIE",
+              "FIREFLYZOMBIE",
+              "ARROWZOMBIE",
+              "WITCHZOMBIE",
+              "INFROLLZOMBIE",
+              "MAGTRUCKZOMBIE",
+              "HAMSTERZOMBIE",
+              "NULLZOMBIE",
+              "ENDNULLZOMBIE"
+            ],
+            "description": "僵尸类型，参见僵尸类型对照表"
+          },
+          "Row": {
+            "type": "integer",
+            "minimum": -3,
+            "maximum": 5,
+            "description": "行数(0~4, -1随机, -2选择最弱行)"
+          },
+          "X": {
+            "type": "integer",
+            "description": "X坐标"
+          },
+          "LowDif": {
+            "type": "integer",
+            "enum": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50
+            ],
+            "description": "最低难度要求，参见难度等级对照表"
+          },
+          "Data": {
+            "type": "object",
+            "properties": {
+              "Health": {
+                "type": "integer",
+                "description": "生命值"
+              },
+              "Starcone": {
+                "type": "integer",
+                "description": "星仪数量"
+              },
+              "Counter": {
+                "type": "integer",
+                "description": "计数器"
+              },
+              "MaxHealth": {
+                "type": "integer",
+                "description": "最大生命值"
+              },
+              "Speed": {
+                "type": "number",
+                "description": "速度"
+              },
+              "Bucket": {
+                "type": "integer",
+                "description": "桶的类型"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "Entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "Type",
+          "ID"
+        ],
+        "properties": {
+          "Type": {
+            "type": "string",
+            "enum": [
+              "Plants",
+              "Buildings",
+              "Zombies",
+              "Bosses"
+            ],
+            "description": "实体类型"
+          },
+          "ID": {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "PEASHOOTER",
+                  "ENZYMEI",
+                  "APPLAYER",
+                  "WALL_NUT",
+                  "ROSELYNCH",
+                  "CHERRY_BOMB",
+                  "SUNFLOWER",
+                  "HONEYSUCKLE",
+                  "CUSCATA",
+                  "LILYPAD",
+                  "PLANTAGE",
+                  "LORUS",
+                  "OPTICALTROP",
+                  "CORCHID",
+                  "LIGHTNINGREED",
+                  "POWERPLANT",
+                  "WIREMOSS",
+                  "MAGNETSHROOM",
+                  "POTATOMINE",
+                  "INFROLLZOMBIE",
+                  "NULLZOMBIE",
+                  "FLAGZOMBIE",
+                  "CONEZOMBIE",
+                  "BUCKETZOMBIE",
+                  "POLEZOMBIE",
+                  "FIREFLYZOMBIE",
+                  "ARROWZOMBIE",
+                  "WITCHZOMBIE",
+                  "NORMALZOMBIE",
+                  "HAMSTERZOMBIE",
+                  "MAGTRUCKZOMBIE",
+                  "ENDNULLZOMBIE"
+                ]
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "Col": {
+            "type": "integer",
+            "minimum": -10,
+            "maximum": 8,
+            "description": "列数(-1~8)"
+          },
+          "Row": {
+            "type": "integer",
+            "minimum": -3,
+            "maximum": 5,
+            "description": "行数(0~4, -1随机, -2选择最弱行)"
+          },
+          "X": {
+            "type": "integer",
+            "description": "X坐标"
+          },
+          "Data": {
+            "type": "object",
+            "properties": {
+              "Health": {
+                "type": "integer",
+                "description": "生命值"
+              },
+              "MaxHealth": {
+                "type": "integer",
+                "description": "最大生命值"
+              },
+              "Type": {
+                "type": "integer",
+                "description": "子 ID"
+              },
+              "Counter": {
+                "type": "integer",
+                "description": "倒计时"
+              },
+              "Gene": {
+                "type": "integer",
+                "description": "基因型"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "Dialog": {
+      "type": "object",
+      "properties": {
+        "GameLevel": {
+          "type": "integer",
+          "description": "游戏关卡"
+        },
+        "SnowPalace": {
+          "type": "integer",
+          "description": "雪原特殊属性"
+        },
+        "ID": {
+          "type": "integer",
+          "description": "对话 ID"
+        }
+      },
+      "required": [
+        "ID"
+      ],
+      "additionalProperties": false
+    },
+    "ConveyorBelt": {
+      "type": "object",
+      "properties": {
+        "InitTime": {
+          "type": "integer",
+          "description": "初始时间"
+        },
+        "Interval": {
+          "type": "integer",
+          "description": "间隔"
+        },
+        "InitSeedLeft": {
+          "type": "boolean",
+          "description": "间隔"
+        },
+        "Packets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Type": {
+                "type": "string",
+                "enum": [
+                  "PEASHOOTER",
+                  "ENZYMEI",
+                  "APPLAYER",
+                  "WALL_NUT",
+                  "ROSELYNCH",
+                  "CHERRY_BOMB",
+                  "SUNFLOWER",
+                  "HONEYSUCKLE",
+                  "CUSCATA",
+                  "LILYPAD",
+                  "PLANTAGE",
+                  "LORUS",
+                  "OPTICALTROP",
+                  "CORCHID",
+                  "LIGHTNINGREED",
+                  "POWERPLANT",
+                  "WIREMOSS",
+                  "MAGNETSHROOM",
+                  "POTATOMINE",
+                  "INFROLLZOMBIE",
+                  "NULLZOMBIE",
+                  "FLAGZOMBIE",
+                  "CONEZOMBIE",
+                  "BUCKETZOMBIE",
+                  "POLEZOMBIE",
+                  "FIREFLYZOMBIE",
+                  "ARROWZOMBIE",
+                  "WITCHZOMBIE",
+                  "NORMALZOMBIE",
+                  "HAMSTERZOMBIE",
+                  "MAGTRUCKZOMBIE",
+                  "ENDNULLZOMBIE"
+                ],
+                "description": "植物 ID"
+              },
+              "Weight": {
+                "type": "integer",
+                "description": "权重"
+              },
+              "MinWeight": {
+                "type": "integer",
+                "description": "最小权重"
+              },
+              "MinWeightNum": {
+                "type": "integer",
+                "description": "最小权重数量"
+              },
+              "Total": {
+                "type": "integer",
+                "description": "总数限制"
+              }
+            },
+            "required": [
+              "Type"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
