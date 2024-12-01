@@ -16,6 +16,7 @@
     - [3. Clear All Waves](#3-clear-all-waves)
     - [4. Create Template](#4-create-template)
     - [5. Generate Summary](#5-generate-summary)
+    - [6. Formatting Json](#6-Format-Json)
 6. [Examples](#examples)
 7. [Configuration](#configuration)
 8. [Contributing](#contributing)
@@ -284,7 +285,7 @@ Analyzes the current level JSON file and generates a comprehensive summary, incl
 - The summary is formatted in Markdown, making it easy to read and share.
 - Useful for documentation, level reviews, or collaborative development.
 
-### 6. format Json
+### 6. Format Json
 
 **command**: `ghtr-diy.formatJson`  
 **shortcut**: `Ctrl+Alt+F`
