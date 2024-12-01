@@ -2,7 +2,7 @@
   "name": "ghtr-diy-json-helper",
   "displayName": "GhTr DIY JSON Helper",
   "description": "自动补全和校验 GhTr DIY 关卡 JSON 文件",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "Xcating",
   "repository": {
     "type": "git",
