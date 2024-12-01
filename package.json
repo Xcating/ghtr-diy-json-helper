@@ -4,6 +4,10 @@
   "description": "自动补全和校验 GhTr DIY 关卡 JSON 文件",
   "version": "0.0.2",
   "publisher": "Xcating",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xcating/ghtr-diy-json-helper.git"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },

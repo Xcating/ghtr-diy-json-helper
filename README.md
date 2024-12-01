@@ -1,5 +1,5 @@
 # GhTr DIY JSON Helper
-![中文版README](README-zh-cn.md) 
+[中文版README](README-zh-cn.md) 
 
 
 ## Table of Contents

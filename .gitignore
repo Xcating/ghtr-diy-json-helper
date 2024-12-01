@@ -64,7 +64,7 @@ package-lock.json
 .eslintcache
 *v8.log
 /lib/
-ghtr-diy-json-helper-0.0.1.vsix
+ghtr-diy-json-helper-*.vsix
 .vscode/extensions.json
 .vscode/tasks.json
 out/extension.js
